@@ -8,7 +8,7 @@ import cv2
 
 def cnn_net(inputs):  # inputs (bs, 32, 128, 1)
 
-    with tf.variable_scope('CNN_Net'):
+    with tf.variable_scope('CNN_Module'):
         # ---------------------- part1 -------------------------
         conv1 = tf.keras.layers.Conv2D(filters=64,
                                        kernel_size=(3, 3),
@@ -109,7 +109,7 @@ def cnn_net(inputs):  # inputs (bs, 32, 128, 1)
 
 
 def fc_net(cnn_out, is_training):
-    with tf.variable_scope('FC_Net'):
+    with tf.variable_scope('FC_Module'):
         shape = cnn_out.get_shape().as_list()
         seq_out = tf.reshape(tensor=cnn_out, shape=[-1, shape[1] * shape[2] * shape[3]], name='reshape1')  # (bs, 8, 1024)
         seq_out.set_shape([None, shape[1]*shape[2]*shape[3]])

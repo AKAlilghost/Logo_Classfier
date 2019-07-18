@@ -24,7 +24,8 @@ def image_preprocess_by_normality(img_cv2):
 
 def preprocess(img_path):
     img_cv2 = cv2.imread(img_path)
-    img_cv2 = cv2.resize(img_cv2, dsize=(config.img_w, config.img_h), interpolation=cv2.INTER_NEAREST)
+    # img_cv2 = cv2.resize(img_cv2, dsize=(config.img_w, config.img_h), interpolation=cv2.INTER_NEAREST)
+    img_cv2 = cv2.resize(img_cv2, dsize=(config.img_w, config.img_h), interpolation=cv2.INTER_LINEAR_EXACT)
     # normalization
     img_data = image_preprocess_by_normality(img_cv2)
     return img_data
